@@ -505,32 +505,42 @@
 /* Thêm styles cho thiết bị di động */
 @media screen and (max-width: 768px) {
     .tooltip-box {
-        width: 30vw;
-        /* Giảm xuống còn 1/3 kích thước */
-        min-width: 100px;
-        max-width: 150px;
-        padding: 10px;
-        font-size: 12px;
+        width: 33.33vw;
+        /* Chính xác 1/3 kích thước màn hình */
+        min-width: 80px;
+        max-width: 120px;
+        /* Giảm max-width xuống */
+        padding: 8px;
+        font-size: 11px;
+        border-radius: 8px;
     }
 
     .district-item {
-        padding: 8px;
-        margin-bottom: 6px;
+        padding: 6px;
+        margin-bottom: 4px;
+        border-radius: 6px;
     }
 
     .district-item h4 {
-        font-size: 14px;
+        font-size: 12px;
+        margin-bottom: 4px;
     }
 
     .district-item .description {
-        font-size: 12px;
+        font-size: 10px;
+        margin: 4px 0;
     }
 
     .stats {
-        gap: 6px;
+        gap: 4px;
     }
 
     .stat {
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .stat .icon {
         font-size: 12px;
     }
 }
