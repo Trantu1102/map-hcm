@@ -1,235 +1,635 @@
-const canvas = document.getElementById('mapCanvas');
-const ctx = canvas.getContext('2d');
-
-const img = document.querySelector('.map-container img');
-canvas.width = img.clientWidth;
-canvas.height = img.clientHeight;
-
-const mapElement = document.getElementById('hcm-map');
-
-let areas = [];
-let locationsData = [];
-
-fetch('provinces.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Thay đổi để lấy dữ liệu từ hcm_districts
-        locationsData = data.hcm_districts;
-        areas = locationsData.map(location => {
-            if (!location.coords) {
-                console.error('Missing coords for location:', location);
-                return { coords: [], shape: 'poly' };
-            }
-            const coords = location.coords.split(',').map(Number);
-            const shape = 'poly';
-            return { coords, shape };
-        });
-        createMapAreas();
-    })
-    .catch(error => {
-        console.error('Error loading the JSON file:', error);
-    });
-
-function updateCanvasSize() {
-    // Cập nhật kích thước canvas theo kích thước thực của ảnh
-    canvas.width = img.offsetWidth;
-    canvas.height = img.offsetHeight;
-    canvas.style.width = `${img.offsetWidth}px`;
-    canvas.style.height = `${img.offsetHeight}px`;
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Thay đổi từ row sang column */
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-// Sửa lại event listener resize
-window.addEventListener('resize', () => {
-    updateCanvasSize();
-    createMapAreas();
-});
-
-// Thêm vào sau khi ảnh đã load
-img.addEventListener('load', () => {
-    updateCanvasSize();
-    createMapAreas();
-});
-
-// Sửa lại hàm createMapAreas
-function createMapAreas() {
-    mapElement.innerHTML = '';
-    const scaleX = img.offsetWidth / img.naturalWidth;
-    const scaleY = img.offsetHeight / img.naturalHeight;
-    
-    areas.forEach((area) => {
-        const scaledCoords = area.coords.map((val, index) => {
-            return index % 2 === 0 
-                ? Math.round(val * scaleX) 
-                : Math.round(val * scaleY);
-        });
-        
-        const areaElement = document.createElement('area');
-        areaElement.setAttribute('shape', area.shape);
-        areaElement.setAttribute('coords', scaledCoords.join(','));
-        areaElement.setAttribute('href', 'javascript:void(0)');
-        mapElement.appendChild(areaElement);
-    });
-    
-    setupEventListeners();
+.map-container {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
 }
 
-const drawOutline = (coords) => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
-    const scaleX = canvas.width / img.naturalWidth;
-    const scaleY = canvas.height / img.naturalHeight;
-    
-    ctx.moveTo(coords[0] * scaleX, coords[1] * scaleY);
-    for (let i = 2; i < coords.length; i += 2) {
-        ctx.lineTo(coords[i] * scaleX, coords[i + 1] * scaleY);
+.map-container img,
+#mapCanvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#mapCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#vietnam-map {
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip-box {
+    position: absolute;
+    background: #f6f9fe;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    max-width: 450px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    opacity: 1;
+    display: none;
+    text-align: left;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    position: fixed;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.tooltip-box.active {
+    pointer-events: auto;
+    /* Cho phép tương tác khi active */
+}
+
+.district-header {
+    background: transparent;
+    color: white;
+    padding: 5px 20px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.district-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e8eef9;
+}
+
+.district-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 12px 15px;
+}
+
+.district-item h4 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.district-item .stat .value {
+    color: #d60000;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.district-item .stat .label {
+    color: #697384;
+    font-size: 14px;
+}
+
+.district-item .stat .icon {
+    color: #e4393c;
+    font-size: 16px;
+}
+
+.district-item .stat .label {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.district-item:nth-child(-n+4) {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+}
+
+.district-item h4 {
+    color: white;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.district-item:nth-child(n) {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.district-item:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.district-item .description {
+    color: #697384;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+
+.district-item .stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 12px;
+}
+
+.district-item .stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.district-item .description {
+    color: #697384;
+    font-size: 14px;
+    margin: 12px 0;
+}
+
+.district-item .stat .icon {
+    font-size: 16px;
+}
+
+.district-item .stat .label {
+    color: #697384;
+    font-size: 14px;
+}
+
+.district-item .stat .value {
+    color: #1f3464;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tooltip-box h2 {
+    color: #1a73e8;
+    margin: 0 0 15px 0;
+    font-size: 50px !important;
+    font-weight: 900 !important;
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.district-item h4 {
+    color: #34495e;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    /* Slightly larger for ward names */
+    font-weight: 800;
+    /* Bolder for ward names */
+}
+
+.district-item .stat .value {
+    color: #d60000;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.tooltip-box .current-wards {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.tooltip-box .future-wards {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ward-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.ward-info img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.ward-info .stats {
+    display: flex;
+    gap: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.tooltip-box .future-wards h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Khoảng cách đều giữa các thành phần trong h3 */
+    flex-wrap: wrap;
+    margin: 0;
+    /* Bỏ margin mặc định */
+}
+
+.tooltip-box h3 {
+    font-size: 0.9em;
+    color: #5f6368;
+    margin: 0 0 8px 0;
+}
+
+.tooltip-box .ward-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a73e8;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    margin: 0;
+    /* Bỏ margin mặc định */
+}
+
+.tooltip-box .ward-count.highlight {
+    background: #1a73e8;
+    font-weight: 600;
+}
+
+.tooltip-box .ward-list {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #202124;
+}
+
+.tooltip-box .ward-list.highlight {
+    margin: 0;
+    /* Bỏ margin mặc định */
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* Khoảng cách đều giữa các phường */
+}
+
+.tooltip-box .highlight {
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+.tooltip-box .reduction-badge {
+    margin: 0;
+    /* Bỏ margin mặc định */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbbc04;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.district-info {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-size: 1px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.stat-item .icon {
+    font-size: 16px;
+}
+
+.stat-item .label {
+    color: #7f8c8d;
+}
+
+.stat-item .value {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.district-header h3 {
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    font-size: 16px;
+}
+
+.district-item {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+.district-item h4 {
+    color: #34495e;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+.description {
+    color: #7f8c8d;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.stat .icon {
+    font-size: 14px;
+}
+
+.stat .label {
+    color: #7f8c8d;
+}
+
+.stat .value {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.instruction-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff5f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-banner img {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.instruction-banner p {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.explanation-text {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.explanation-text p {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.map-instruction {
+    background-color: #fff5f0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.map-instruction img {
+    width: 20px;
+    height: auto;
+}
+
+.map-instruction p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.article-header {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+.article-header .title {
+    font-family: 'inherit', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.article-header .sapo {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 30px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+
+/* Media queries cho điện thoại */
+/* Thêm styles cho thiết bị di động */
+@media screen and (max-width: 768px) {
+    .tooltip-box {
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+        width: 100vw !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        border-radius: 16px 16px 0 0 !important;
+        transform: none !important;
+        padding: 18px 10px 24px 10px !important;
+        font-size: 15px !important;
+        box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        max-height: 70vh;
+        overflow-y: auto;
+        animation: slideUp 0.3s ease;
+        touch-action: pan-y;
     }
-    
-    ctx.closePath();
-    
-    // Thêm fill màu da cam nhạt
-    ctx.fillStyle = 'rgba(255, 165, 0, 0.3)'; // Màu da cam với độ trong suốt 0.3
-    ctx.fill();
-    
-    // Vẽ viền đỏ
-    ctx.strokeStyle = 'red';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-};
-
-const clearOutline = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-};
-
-// Tooltip functionality
-const tooltip = document.querySelector('.tooltip-box');
-
-// Sửa lại hàm showTooltip để tối ưu cho thiết bị di động
-const showTooltip = (data, event) => {
-    const tooltip = document.querySelector('.tooltip-box');
-    let tooltipContent = `<button class="tooltip-close" onclick="closeTooltip()">&times;</button>`;
-    tooltipContent += `
-        <div class="district-header">
-            <h3>${data.name}</h3>
-        </div>
-    `;
-    data.districts.forEach(district => {
-        tooltipContent += `
-            <div class="district-item">
-                <h4>${district.name}</h4>
-                <p class="description">${district.description}</p>
-                <div class="stats">
-                    <div class="stat">
-                        <span class="icon">🗺️</span>
-                        <span class="label">Diện tích:</span>
-                        <span class="value">${district.area} km²</span>
-                    </div>
-                    <div class="stat">
-                        <span class="icon">👥</span>
-                        <span class="label">Dân số:</span>
-                        <span class="value">${district.population} người</span>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-    tooltip.innerHTML = tooltipContent;
-    tooltip.classList.add('active'); // Luôn thêm class active cho cả desktop và mobile
-    tooltip.style.display = 'block'; // Đảm bảo hiển thị
-    if (window.innerWidth <= 768) {
-        tooltip.scrollTop = 0;
-    } else {
-        // Vị trí tooltip cho desktop
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const tooltipRect = tooltip.getBoundingClientRect();
-        let x = event.clientX + 50;
-        let y = event.clientY - tooltipRect.height / 2;
-        if (x + tooltipRect.width > viewportWidth) {
-            x = event.clientX - tooltipRect.width - 50;
-        }
-        if (y < 0) {
-            y = 0;
-        } else if (y + tooltipRect.height > viewportHeight) {
-            y = viewportHeight - tooltipRect.height;
-        }
-        tooltip.style.position = 'fixed';
-        tooltip.style.left = x + 'px';
-        tooltip.style.top = y + 'px';
-        tooltip.style.transform = 'none';
-        tooltip.style.maxWidth = '450px';
+    .tooltip-box.active {
+        display: block !important;
     }
-};
-
-function closeTooltip() {
-    const tooltip = document.querySelector('.tooltip-box');
-    tooltip.classList.remove('active');
-    tooltip.style.display = 'none'; // Ẩn tooltip
+    .tooltip-close {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 18px;
+        font-size: 28px;
+        color: #888;
+        background: none;
+        border: none;
+        z-index: 10001;
+        cursor: pointer;
+    }
 }
-// Đóng tooltip khi click ngoài
-if (window.innerWidth <= 768) {
-    document.addEventListener('click', function(e) {
-        const tooltip = document.querySelector('.tooltip-box');
-        if (tooltip.classList.contains('active') && !tooltip.contains(e.target)) {
-            closeTooltip();
-        }
-    });
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
 }
 
-// Thêm sự kiện click vào document để đóng tooltip
-document.addEventListener('click', (event) => {
-    const tooltip = document.querySelector('.tooltip-box');
-    const selectedArea = document.querySelector('path[data-active="true"]');
-    
-    // Kiểm tra nếu click ngoài tooltip và ngoài vùng được chọn thì mới đóng
-    if (!tooltip.contains(event.target) && (!selectedArea || !selectedArea.contains(event.target))) {
-        tooltip.style.display = 'none';
-        // Xóa trạng thái active của vùng được chọn
-        if (selectedArea) {
-            selectedArea.removeAttribute('data-active');
-        }
-    }
-});
-
-function setupEventListeners() {
-    const areaElements = document.querySelectorAll('area');
-    let currentArea = null;
-    
-    areaElements.forEach((area, index) => {
-        // Chỉ xử lý sự kiện click
-        area.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation(); // Ngăn chặn sự kiện click lan ra document
-            
-            const districtData = locationsData[index];
-            
-            // Nếu click vào area khác, xóa outline của area cũ
-            if (currentArea && currentArea !== area) {
-                clearOutline();
-            }
-            
-            // Cập nhật area hiện tại
-            currentArea = area;
-            
-            // Vẽ outline và hiển thị tooltip
-            drawOutline(areas[index].coords);
-            showTooltip(districtData, event);
-        });
-    });
+.district-item h4 {
+    font-size: 13px;
 }
 
-// Sửa lại sự kiện click document để đóng tooltip
-document.addEventListener('click', (event) => {
-    const tooltip = document.querySelector('.tooltip-box');
-    const areaElements = document.querySelectorAll('area');
-    
-    // Kiểm tra xem có click vào area hoặc tooltip không
-    if (!tooltip.contains(event.target)) {
-        tooltip.style.display = 'none';
-        clearOutline();
+.stats {
+    gap: 2px;
+}
+
+
+.tooltip-box h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tooltip-box h3 {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.tooltip-box p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.tooltip-box hr {
+    margin: 5px 0;
+}
+
+.tooltip-box .highlight {
+    font-size: 13px;
+}
+
+.instruction-banner {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.instruction-banner img {
+    width: 24px;
+}
+
+.instruction-banner p {
+    font-size: 14px;
+}
+
+.explanation-text {
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.explanation-text p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.map-instruction {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.map-instruction img {
+    width: 16px;
+}
+
+.article-header .title {
+    font-size: 20px;
+}
+
+.article-header .sapo {
+    font-size: 14px;
+}
+
+.sapo-image {
+    margin: 15px auto;
+}
+
+
+/* Media queries cho điện thoại nhỏ hơn */
+@media screen and (max-width: 375px) {
+    .tooltip-box {
+        width: 90vw;
+        min-width: 120px;
+        max-width: 250px;
+        font-size: 12px;
+        padding: 6px;
     }
-});
+}
