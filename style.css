@@ -1,0 +1,623 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Thay đổi từ row sang column */
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.map-container {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.map-container img,
+#mapCanvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#mapCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#vietnam-map {
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip-box {
+    position: absolute;
+    background: #f6f9fe;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    max-width: 450px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    opacity: 1;
+    display: none;
+    text-align: left;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    position: fixed;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.tooltip-box.active {
+    pointer-events: auto;
+    /* Cho phép tương tác khi active */
+}
+
+.district-header {
+    background: transparent;
+    color: white;
+    padding: 5px 20px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.district-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e8eef9;
+}
+
+.district-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding: 12px 15px;
+}
+
+.district-item h4 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.district-item .stat .value {
+    color: #d60000;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.district-item .stat .label {
+    color: #697384;
+    font-size: 14px;
+}
+
+.district-item .stat .icon {
+    color: #e4393c;
+    font-size: 16px;
+}
+
+.district-item .stat .label {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.district-item:nth-child(-n+4) {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+}
+
+.district-item h4 {
+    color: white;
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.district-item:nth-child(n) {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.district-item:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.district-item .description {
+    color: #697384;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+
+.district-item .stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 12px;
+}
+
+.district-item .stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.district-item .description {
+    color: #697384;
+    font-size: 14px;
+    margin: 12px 0;
+}
+
+.district-item .stat .icon {
+    font-size: 16px;
+}
+
+.district-item .stat .label {
+    color: #697384;
+    font-size: 14px;
+}
+
+.district-item .stat .value {
+    color: #1f3464;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.tooltip-box h2 {
+    color: #1a73e8;
+    margin: 0 0 15px 0;
+    font-size: 50px !important;
+    font-weight: 900 !important;
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+.district-item h4 {
+    color: #34495e;
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    /* Slightly larger for ward names */
+    font-weight: 800;
+    /* Bolder for ward names */
+}
+
+.district-item .stat .value {
+    color: #d60000;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.tooltip-box .current-wards {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.tooltip-box .future-wards {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ward-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.ward-info img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.ward-info .stats {
+    display: flex;
+    gap: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.tooltip-box .future-wards h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Khoảng cách đều giữa các thành phần trong h3 */
+    flex-wrap: wrap;
+    margin: 0;
+    /* Bỏ margin mặc định */
+}
+
+.tooltip-box h3 {
+    font-size: 0.9em;
+    color: #5f6368;
+    margin: 0 0 8px 0;
+}
+
+.tooltip-box .ward-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1a73e8;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    margin: 0;
+    /* Bỏ margin mặc định */
+}
+
+.tooltip-box .ward-count.highlight {
+    background: #1a73e8;
+    font-weight: 600;
+}
+
+.tooltip-box .ward-list {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #202124;
+}
+
+.tooltip-box .ward-list.highlight {
+    margin: 0;
+    /* Bỏ margin mặc định */
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    /* Khoảng cách đều giữa các phường */
+}
+
+.tooltip-box .highlight {
+    color: #1a73e8;
+    font-weight: 600;
+}
+
+.tooltip-box .reduction-badge {
+    margin: 0;
+    /* Bỏ margin mặc định */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbbc04;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.district-info {
+    color: #34495e;
+    margin-bottom: 15px;
+    font-size: 1px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.stat-item .icon {
+    font-size: 16px;
+}
+
+.stat-item .label {
+    color: #7f8c8d;
+}
+
+.stat-item .value {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.district-header h3 {
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    font-size: 16px;
+}
+
+.district-item {
+    background: #fff1f0;
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+.district-item h4 {
+    color: #34495e;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+.description {
+    color: #7f8c8d;
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.stat .icon {
+    font-size: 14px;
+}
+
+.stat .label {
+    color: #7f8c8d;
+}
+
+.stat .value {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.instruction-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff5f0;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-banner img {
+    width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.instruction-banner p {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.explanation-text {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.explanation-text p {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.map-instruction {
+    background-color: #fff5f0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.map-instruction img {
+    width: 20px;
+    height: auto;
+}
+
+.map-instruction p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.article-header {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+.article-header .title {
+    font-family: 'inherit', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.article-header .sapo {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 30px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+
+/* Media queries cho điện thoại */
+/* Thêm styles cho thiết bị di động */
+@media screen and (max-width: 768px) {
+    .tooltip-box {
+        padding: 15px;
+        font-size: 14px;
+        border-radius: 12px;
+        background: rgba(246, 249, 254, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .district-header h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .district-item {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .district-item h4 {
+        font-size: 16px;
+    }
+
+    .district-item .description {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .stat {
+        font-size: 13px;
+    }
+}
+
+.tooltip-box h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tooltip-box h3 {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.tooltip-box p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.tooltip-box hr {
+    margin: 5px 0;
+}
+
+.tooltip-box .highlight {
+    font-size: 13px;
+}
+
+.instruction-banner {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+.instruction-banner img {
+    width: 24px;
+}
+
+.instruction-banner p {
+    font-size: 14px;
+}
+
+.explanation-text {
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.explanation-text p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.map-instruction {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.map-instruction img {
+    width: 16px;
+}
+
+.article-header .title {
+    font-size: 20px;
+}
+
+.article-header .sapo {
+    font-size: 14px;
+}
+
+.sapo-image {
+    margin: 15px auto;
+}
+
+
+/* Media queries cho điện thoại nhỏ hơn */
+@media screen and (max-width: 375px) {
+    .tooltip-box {
+        width: 90vw;
+        min-width: 120px;
+        max-width: 250px;
+        font-size: 12px;
+        padding: 6px;
+    }
+}

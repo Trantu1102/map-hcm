@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map of Ho Chi Minh</title>
+    <base href="./" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="instruction-banner">
+        <p>Mời độc giả nhấn vào từng địa phương để xem thông tin chi tiết</p>
+        <img
+          src="./instruction-icon.png"
+          alt="Instruction Icon"
+          class="instruction-icon"
+        />
+      </div>
+
+      <div class="map-container">
+        <img src="./Map_HCM.png" usemap="#image-map" alt="Hcm Map" />
+        <canvas id="mapCanvas"></canvas>
+        <map name="image-map" id="hcm-map"> </map>
+      </div>
+    </div>
+
+    <div class="tooltip-box"></div>
+  </body>
+</html>

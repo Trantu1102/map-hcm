@@ -1,0 +1,771 @@
+{
+  "hcm_districts": [
+    {
+      "id": 1,
+      "name": "QUẬN 7: 10 phường → 4 phường",
+      "coords": "576,611,574,603,574,596,576,589,580,581,586,573,592,568,598,563,585,562,579,565,572,565,567,560,567,554,571,548,574,543,576,535,572,530,568,525,561,523,557,530,557,539,551,543,544,543,537,547,533,551,524,552,513,552,499,551,503,558,502,565,506,571,502,578,500,583,508,585,514,585,521,584,521,591,526,590,531,591,536,587,542,589,539,594,542,600,543,606,544,616,552,617,554,611,561,610,568,611",
+      "districts": [
+        {
+          "name": "Phường TÂN MỸ",
+          "description": "Tân Phú, một phần Phú Mỹ",
+          "area": "6,45",
+          "population": "66.887"
+        },
+        {
+          "name": "Phường PHÚ THUẬN",
+          "description": "Phú Thuận, phần còn lại Phú Mỹ",
+          "area": "10,55",
+          "population": "56.687"
+        },
+        {
+          "name": "Phường TÂN HƯNG",
+          "description": "Tân Phong, Tân Hưng, Tân Kiểng, Tân Quy",
+          "area": "8,54",
+          "population": "182.417"
+        },
+        {
+          "name": "Phường TÂN THUẬN",
+          "description": "Bình Thuận, Tân Thuận Đông, Tân Thuận Tây",
+          "area": "10,16",
+          "population": "125.281"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "QUẬN 8: 10 phường → 3 phường",
+      "coords": "415,613,419,623,427,608,434,594,440,583,451,579,470,573,480,570,490,571,497,564,500,555,487,554,477,557,465,557,453,563,426,579,420,572,415,582,414,595,396,599,396,610,389,614,396,620,406,619",
+      "districts": [
+        {
+          "name": "Phường CHÁNH HƯNG",
+          "description": "Rạch Ông, Hưng Phú, P.4, một phần P.5",
+          "area": "4,61",
+          "population": "190.707"
+        },
+        {
+          "name": "Phường BÌNH ĐÔNG",
+          "description": "P.6, P.7, phần còn lại P.5, một phần xã An Phú Tây, huyện Bình Chánh",
+          "area": "8,93",
+          "population": "156.332"
+        },
+        {
+          "name": "Phường PHÚ ĐỊNH",
+          "description": "Xóm Củi, P.14, P.15, P.16",
+          "area": "5,85",
+          "population": "150.389"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "QUẬN 6: 10 phường → 4 phường",
+      "coords": "418,574,418,562,423,544,433,545,438,550,453,551,458,559,424,579",
+      "districts": [
+        {
+          "name": "Phường BÌNH TIÊN",
+          "description": "P.1, P.7, P.8",
+          "area": "1,61",
+          "population": "66.707"
+        },
+        {
+          "name": "Phường BÌNH TÂY",
+          "description": "P.2, P.9",
+          "area": "1,05",
+          "population": "45.861"
+        },
+        {
+          "name": "Phường BÌNH PHÚ",
+          "description": "P.10, P.11, một phần P.16 của Quận 8",
+          "area": "2,86",
+          "population": "66.586"
+        },
+        {
+          "name": "Phường PHÚ LÂM",
+          "description": "P.12, P.13, P.14",
+          "area": "2",
+          "population": "74.276"
+        }
+      ]
+    },
+    {
+    "id": 4,
+      "name": "QUẬN 1: 10 phường → 4 phường",
+      "coords": "497,551,491,535,500,526,509,519,505,510,494,499,503,501,512,504,521,510,527,510,524,518,523,530,517,533,507,542",
+      "districts": [
+        {
+          "name": "Phường TÂN ĐỊNH",
+          "description": "Tân Định, một phần P.Đa Kao",
+          "area": "1,23",
+          "population": "48.524"
+        },
+        {
+          "name": "Phường SÀI GÒN",
+          "description": "Bến Nghé, phần còn lại P.Đa Kao, một phần P.Nguyễn Thái Bình",
+          "area": "3,038",
+          "population": "47.022"
+        },
+        {
+          "name": "Phường BẾN THÀNH",
+          "description": "Bến Thành, Phạm Ngũ Lão, một phần P.Cầu Ông Lãnh, phần còn lại P.Nguyễn Thái Bình",
+          "area": "1,852",
+          "population": "71.875"
+        },
+        {
+          "name": "Phường CẦU ÔNG LÃNH",
+          "description": "Nguyễn Cư Trinh, Cầu Kho, Cô Giang, phần còn lại P.Cầu Ông Lãnh",
+          "area": "1,6",
+          "population": "78.734"
+        }
+      ]
+    },
+    {
+    "id": 5,
+      "name": "QUẬN 3: 10 phường → 3 phường",
+      "coords": "483,533,495,529,489,518,470,510,478,511,484,506,497,506,510,516,503,522",
+      "districts": [
+        {
+          "name": "Phường XUÂN HÒA",
+          "description": "Võ Thị Sáu, một phần P.4",
+          "area": "2,217",
+          "population": "48.466"
+        },
+        {
+          "name": "Phường NHIÊU LỘC",
+          "description": "P.9, P.11, P.12, P.14",
+          "area": "1,71",
+          "population": "88.090"
+        },
+        {
+          "name": "Phường BÀN CỜ",
+          "description": "P.1, P.2, P.3, P.5, một phần P.4",
+          "area": "0,99",
+          "population": "67.634"
+        }
+      ]
+    },
+    {
+    "id": 6,
+      "name": "QUẬN 4: 10 phường → 3 phường",
+      "coords": "498,552,510,541,516,533,522,531,528,538,540,543,536,550,523,550,510,550",
+      "districts": [
+        {
+          "name": "Phường VĨNH HỘI",
+          "description": "P.1, P.3, một phần P.2, một phần P.4",
+          "area": "1,17",
+          "population": "63.015"
+        },
+        {
+          "name": "Phường KHÁNH HỘI",
+          "description": "P.8, P.9, một phần P.15, phần còn lại của P.2, P.4",
+          "area": "1,07",
+          "population": "94.507"
+        },
+        {
+          "name": "Phường XÓM CHIẾU",
+          "description": "P.13, P.16, P.18, phần còn lại P.15",
+          "area": "1,94",
+          "population": "57.875"
+        }
+      ]
+    },
+    {
+    "id": 7,
+      "name": "QUẬN 5: 10 phường → 3 phường",
+      "coords": "459,560,457,554,450,554,453,546,466,546,481,543,490,537,497,550,491,550,484,553,479,554,472,554,465,555",
+      "districts": [
+        {
+          "name": "Phường CHỢ QUÁN",
+          "description": "P.1, P.2, P.4",
+          "area": "1,28",
+          "population": "63.545"
+        },
+        {
+          "name": "Phường AN ĐÔNG",
+          "description": "P.5, P.7, P.9",
+          "area": "1,32",
+          "population": "81.229"
+        },
+        {
+          "name": "Phường CHỢ LỚN",
+          "description": "P.11, P.12, P.13, P.14",
+          "area": "1,67",
+          "population": "85.066"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "QUẬN 10: 10 phường → 3 phường",
+      "coords": "466,545,463,530,459,522,469,511,490,522,481,533,488,535,482,542,475,542",
+      "districts": [
+        {
+          "name": "Phường VƯỜN LÀI",
+          "description": "P.1, P.2, P.4, P.9, P.10",
+          "area": "1,27",
+          "population": "76.425"
+        },
+        {
+          "name": "Phường DIÊN HỒNG",
+          "description": "P.6, P.8, P.14",
+          "area": "1,86",
+          "population": "59.218"
+        },
+        {
+          "name": "Phường HÒA HƯNG",
+          "description": "P.12, P.13, P.15",
+          "area": "2,59",
+          "population": "75.180"
+        }
+      ]
+    },
+
+    {
+      "id": 9,
+      "name": "QUẬN 11: 10 phường → 4 phường",
+      "coords": "453,553,447,549,438,550,432,544,437,540,435,530,448,525,453,532,460,522,467,544,453,547",
+      "districts": [
+        {
+          "name": "Phường MINH PHỤNG",
+          "description": "P.1, P.7, P.16",
+          "area": "1,27",
+          "population": "74.459"
+        },
+        {
+          "name": "Phường BÌNH THỚI",
+          "description": "P.3, P.10, một phần P.8",
+          "area": "1,52",
+          "population": "55.851"
+        },
+        {
+          "name": "Phường HÒA BÌNH",
+          "description": "P.5, P.14",
+          "area": "0,98",
+          "population": "49.863"
+        },
+        {
+          "name": "Phường PHÚ THỌ",
+          "description": "P.11, P.15, một phần P.8",
+          "area": "1,37",
+          "population": "47.094"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "QUẬN 12: 11 phường → 5 phường",
+      "coords": "394,462,401,449,409,443,401,427,410,413,408,407,413,408,425,397,420,393,426,391,429,384,440,383,454,379,456,384,466,382,474,384,475,372,486,368,489,375,503,368,506,375,498,393,514,413,528,415,532,423,528,430,520,429,511,431,508,438,513,446,512,451,504,456,499,446,498,436,491,437,493,431,484,431,481,419,474,424,467,426,453,419,447,427,433,440,430,447,430,453,425,464,420,469,412,469,403,466",
+      "districts": [
+        {
+          "name": "Phường ĐÔNG HƯNG THUẬN",
+          "description": "Tân Thới Nhất, Tân Hưng Thuận, Đông Hưng Thuận",
+          "area": "8,26",
+          "population": "177.721"
+        },
+        {
+          "name": "Phường TRUNG MỸ TÂY",
+          "description": "Tân Chánh Hiệp, Trung Mỹ Tây",
+          "area": "6,92",
+          "population": "126.917"
+        },
+        {
+          "name": "Phường TÂN THỚI HIỆP",
+          "description": "Hiệp Thành, Tân Thới Hiệp",
+          "area": "8,05",
+          "population": "166.730"
+        },
+        {
+          "name": "Phường THỚI AN",
+          "description": "Thạnh Xuân, Thới An",
+          "area": "14,89",
+          "population": "128.066"
+        },
+        {
+          "name": "Phường AN PHÚ ĐÔNG",
+          "description": "Thạnh Lộc, An Phú Đông",
+          "area": "14,59",
+          "population": "129.257"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "QUẬN BÌNH THẠNH: 15 phường → 5 phường",
+      "coords": "503,497,499,489,493,486,493,478,500,477,505,469,511,468,514,461,508,456,513,452,519,450,522,458,525,468,534,470,544,468,553,461,558,452,566,454,574,461,574,473,570,482,560,482,555,477,553,470,543,474,538,481,541,489,544,499,540,507,531,512,527,507,520,503,510,501",
+      "districts": [
+        {
+          "name": "Phường GIA ĐỊNH",
+          "description": "P.1, P.2, P.7, P.17",
+          "area": "2,76",
+          "population": "120.310"
+        },
+        {
+          "name": "Phường BÌNH THẠNH",
+          "description": "P.12, P.14, P.26",
+          "area": "3,32",
+          "population": "117.497"
+        },
+        {
+          "name": "Phường BÌNH LỢI TRUNG",
+          "description": "P.5, P.11, P.13",
+          "area": "3,89",
+          "population": "102.084"
+        },
+        {
+          "name": "Phường THANH MỸ TÂY",
+          "description": "P.19, P.22, P.25",
+          "area": "4,4",
+          "population": "152.371"
+        },
+        {
+          "name": "Phường BÌNH QUỚI",
+          "description": "P.27, P.28",
+          "area": "6,34",
+          "population": "36.019"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "QUẬN BÌNH TÂN: 10 phường → 5 phường",
+      "coords": "410,469,396,463,390,462,383,460,370,475,375,478,370,475,372,485,371,495,373,502,375,508,378,514,377,521,372,524,364,526,359,534,352,537,359,541,342,554,341,570,355,573,361,579,368,574,371,579,392,587,392,593,398,592,398,599,414,594,416,574,420,559,420,540,414,514,406,496,400,485,399,476,404,473",
+      "districts": [
+        {
+          "name": "Phường BÌNH TÂN",
+          "description": "Bình Hưng Hòa B, một phần Bình Trị Đông A, một phần Tân Tạo",
+          "area": "11,293",
+          "population": "137.234"
+        },
+        {
+          "name": "Phường BÌNH HƯNG HÒA",
+          "description": "Bình Hưng Hòa, một phần Bình Hưng Hòa A, một phần P.Sơn Kỳ, quận Tân Phú",
+          "area": "9,439",
+          "population": "186.857"
+        },
+        {
+          "name": "Phường BÌNH TRỊ ĐÔNG",
+          "description": "Bình Trị Đông, một phần Bình Trị Đông A và một phần Bình Hưng Hòa A",
+          "area": "7,152",
+          "population": "149.400"
+        },
+        {
+          "name": "Phường AN LẠC",
+          "description": "An Lạc, An Lạc A, Bình Trị Đông B",
+          "area": "10,472",
+          "population": "162.695"
+        },
+        {
+          "name": "Phường TÂN TẠO",
+          "description": "Tân Tạo A, một phần Tân Tạo, một phần xã Tân Kiên huyện Bình Chánh",
+          "area": "14,665",
+          "population": "113.941"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "QUẬN GÒ VẤP: 12 phường → 6 phường",
+      "coords": "442,460,431,454,431,443,446,428,454,421,463,426,470,427,477,421,480,430,493,431,490,436,496,438,498,447,501,457,511,457,510,464,504,464,503,474,494,475,493,480,487,476,480,478,482,470,487,461,475,461,467,456,458,451,447,449",
+      "districts": [
+        {
+          "name": "Phường HẠNH THÔNG",
+          "description": "P.1, P.3",
+          "area": "3,37",
+          "population": "127.135"
+        },
+        {
+          "name": "Phường AN NHƠN",
+          "description": "P.5, P.6",
+          "area": "3,23",
+          "population": "96.717"
+        },
+        {
+          "name": "Phường GÒ VẤP",
+          "description": "P.10, P.17",
+          "area": "2,81",
+          "population": "99.629"
+        },
+        {
+          "name": "Phường THỐNG TÂY HỘI",
+          "description": "P.8, P.11",
+          "area": "3,24",
+          "population": "118.826"
+        },
+        {
+          "name": "Phường AN HỘI TÂY",
+          "description": "P.12, P.14",
+          "area": "3,79",
+          "population": "115.989"
+        },
+        {
+          "name": "Phường AN HỘI ĐÔNG",
+          "description": "P.15, P.16",
+          "area": "3,29",
+          "population": "112.067"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "QUẬN TÂN BÌNH: 15 phường → 6 phường",
+      "coords": "455,533,449,522,443,518,429,471,424,464,430,456,441,459,447,450,457,451,469,458,485,462,479,465,484,473,477,476,473,489,474,499,469,509,459,518",
+      "districts": [
+        {
+          "name": "Phường TÂN SƠN HÒA",
+          "description": "P.1, P.2, P.3",
+          "area": "2,61",
+          "population": "58.783"
+        },
+        {
+          "name": "Phường TÂN SƠN NHẤT",
+          "description": "P.4, P.5, P.7",
+          "area": "3,19",
+          "population": "66.684"
+        },
+        {
+          "name": "Phường TÂN HÒA",
+          "description": "P.6, P.8, P.9",
+          "area": "1,47",
+          "population": "69.946"
+        },
+        {
+          "name": "Phường BẢY HIỀN",
+          "description": "P.10, P.11, P.12",
+          "area": "2,87",
+          "population": "110.754"
+        },
+        {
+          "name": "Phường TÂN BÌNH",
+          "description": "P.13, P.14, một phần P.15",
+          "area": "2,21",
+          "population": "87.854"
+        },
+        {
+          "name": "Phường TÂN SƠN",
+          "description": "P.15, một phần P.13",
+          "area": "10,08",
+          "population": "68.290"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "QUẬN TÂN PHÚ: 11 phường → 5 phường",
+      "coords": "420,542,428,540,432,545,432,530,440,526,446,522,441,511,434,491,430,477,425,464,421,470,413,470,402,477,399,484,412,509,418,525",
+      "districts": [
+        {
+          "name": "Phường TÂY THẠNH",
+          "description": "Tây Thạnh, một phần Sơn Kỳ",
+          "area": "4",
+          "population": "81.828"
+        },
+        {
+          "name": "Phường TÂN SƠN NHÌ",
+          "description": "Tân Sơn Nhì, một phần Tân Quý, một phần Tân Thành, một phần Sơn Kỳ",
+          "area": "3,49",
+          "population": "104.391"
+        },
+        {
+          "name": "Phường PHÚ THỌ HÒA",
+          "description": "Phú Thọ Hòa, một phần Tân Quý, một phần Tân Thành",
+          "area": "3,03",
+          "population": "130.377"
+        },
+        {
+          "name": "Phường PHÚ THẠNH",
+          "description": "Phú Thạnh, Hiệp Tân, một phần Tân Thới Hòa",
+          "area": "2,98",
+          "population": "94.831"
+        },
+        {
+          "name": "Phường TÂN PHÚ",
+          "description": "Phú Trung, Hòa Thạnh, một phần Tân Thành và một phần Tân Thới Hòa",
+          "area": "2,52",
+          "population": "89.059"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "QUẬN PHÚ NHUẬN: 11 phường → 3 phường",
+      "coords": "470,507,474,501,472,493,478,477,482,480,494,482,498,489,505,499,498,499,494,496,496,501,485,504,478,507",
+      "districts": [
+        {
+          "name": "Phường ĐỨC NHUẬN",
+          "description": "P.4, P.5, P.9",
+          "area": "2,16",
+          "population": "71.848"
+        },
+        {
+          "name": "Phường CẦU KIỆU",
+          "description": "P.1, P.2, P.7, một phần P.15",
+          "area": "1,23",
+          "population": "77.995"
+        },
+        {
+          "name": "Phường PHÚ NHUẬN",
+          "description": "P.8, P.10, P.11, P.13, một phần P.15",
+          "area": "1,46",
+          "population": "65.244"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "TP THỦ ĐỨC: 34 phường → 12 phường",
+      "coords": "572,479,572,464,571,456,563,451,556,453,549,462,540,467,530,469,522,465,521,453,515,448,508,443,508,434,516,431,524,431,532,428,526,416,529,409,540,408,537,401,526,401,531,397,532,390,525,385,532,378,544,385,550,385,550,391,556,392,552,396,564,395,573,402,567,406,572,417,588,411,582,407,586,402,583,396,588,390,594,382,610,398,609,410,616,414,615,406,630,407,637,403,643,405,655,391,661,388,659,381,672,376,681,375,684,393,694,402,689,417,693,433,703,446,715,460,727,472,732,482,726,494,717,502,710,510,715,520,723,528,720,536,712,537,704,534,697,525,688,524,681,527,675,532,670,539,663,544,659,539,665,525,658,520,650,523,639,531,636,541,632,546,609,555,599,559,593,566,581,565,569,567,563,561,565,551,572,544,574,535,569,529,558,523,554,528,553,541,546,547,532,546,522,536,521,526,524,517,539,511,546,499,540,486,543,477,551,471,555,481,565,485",
+      "districts": [
+        {
+          "name": "Phường HIỆP BÌNH",
+          "description": "Hiệp Bình Chánh, Hiệp Bình Phước, một phần P.Linh Đông",
+          "area": "16",
+          "population": "191.878"
+        },
+        {
+          "name": "Phường TAM BÌNH",
+          "description": "Bình Chiểu, Tam Bình và Tam Phú",
+          "area": "10,71",
+          "population": "146.569"
+        },
+        {
+          "name": "Phường THỦ ĐỨC",
+          "description": "Linh Chiểu, Bình Thọ, Trường Thọ, một phần P.Linh Tây, phần còn lại của P.Linh Đông",
+          "area": "8,81",
+          "population": "120.738"
+        },
+        {
+          "name": "Phường LINH XUÂN",
+          "description": "Linh Trung, Linh Xuân và phần còn lại P.Linh Tây",
+          "area": "12,29",
+          "population": "153.725"
+        },
+        {
+          "name": "Phường LONG BÌNH",
+          "description": "Long Bình, Long Thạnh Mỹ",
+          "area": "29,43",
+          "population": "100.760"
+        },
+        {
+          "name": "Phường TĂNG NHƠN PHÚ",
+          "description": "Hiệp Phú, Tân Phú, Tăng Nhơn Phú A, Tăng Nhơn Phú B",
+          "area": "16,509",
+          "population": "181.317"
+        },
+        {
+          "name": "Phường PHƯỚC LONG",
+          "description": "Phước Bình, Phước Long A, Phước Long B",
+          "area": "9,23",
+          "population": "123.442"
+        },
+        {
+          "name": "Phường LONG PHƯỚC",
+          "description": "Long Phước, Trường Thạnh",
+          "area": "34,29",
+          "population": "46.902"
+        },
+        {
+          "name": "Phường LONG TRƯỜNG",
+          "description": "Long Trường, Phú Hữu",
+          "area": "24,49",
+          "population": "71.026"
+        },
+        {
+          "name": "Phường AN KHÁNH",
+          "description": "An Khánh, An Lợi Đông, Thảo Điền, Thủ Thiêm, một phần P.An Phú",
+          "area": "15,33",
+          "population": "73.629"
+        },
+        {
+          "name": "Phường BÌNH TRƯNG",
+          "description": "Bình Trưng Đông, Bình Trưng Tây, phần còn lại P.An Phú",
+          "area": "14,82",
+          "population": "108.139"
+        },
+        {
+          "name": "Phường CÁT LÁI",
+          "description": "Cát Lái, Thạnh Mỹ Lợi",
+          "area": "19,65",
+          "population": "56.614"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "HUYỆN BÌNH CHÁNH: 16 phường → 7 xã",
+      "coords": "301,405,312,407,305,437,323,442,343,440,346,446,360,443,368,454,375,454,385,459,370,475,374,478,370,475,372,485,370,495,373,502,378,510,378,518,373,525,367,522,363,531,355,533,353,540,358,540,352,547,341,554,341,571,360,574,360,581,368,575,371,581,392,588,396,594,396,608,389,613,393,620,400,620,416,614,420,623,436,591,441,580,448,578,471,574,480,569,490,571,501,564,505,571,501,577,501,584,498,600,488,597,481,607,481,624,483,631,490,638,487,644,486,656,493,661,495,669,492,677,482,680,476,687,460,683,456,689,455,696,447,692,444,702,435,704,425,702,429,694,425,684,417,686,421,677,410,672,396,665,393,674,380,672,370,669,368,674,358,675,354,668,348,671,343,678,337,674,339,667,329,665,334,655,337,646,332,635,327,629,311,631,302,605,308,594,296,586,282,594,273,582,259,578,237,560,226,546,277,507",
+      "districts": [
+        {
+          "name": "Xã VĨNH LỘC",
+          "description": "Vĩnh Lộc A, một phần Phạm Văn Hai",
+          "area": "30,58",
+          "population": "167.042"
+        },
+        {
+          "name": "Xã TÂN VĨNH LỘC",
+          "description": "Vĩnh Lộc B, phần còn lại xã Phạm Văn Hai",
+          "area": "34,02",
+          "population": "164.278"
+        },
+        {
+          "name": "Xã BÌNH LỢI",
+          "description": "Bình Lợi, Lê Minh Xuân",
+          "area": "54,17",
+          "population": "47.180"
+        },
+        {
+          "name": "Xã TÂN NHỰT",
+          "description": "Tân Kiên, Tân Nhựt, thị trấn Tân Túc",
+          "area": "43,48",
+          "population": "115.721"
+        },
+        {
+          "name": "Xã BÌNH CHÁNH",
+          "description": "Bình Chánh, Tân Quý Tây, phần còn lại của xã An Phú Tây (một phần vào phường Bình Đông, Quận 8)",
+          "area": "21,33",
+          "population": "76.187"
+        },
+        {
+          "name": "Xã HƯNG LONG",
+          "description": "Hưng Long, Qui Đức, Đa Phước",
+          "area": "35,54",
+          "population": "71.504"
+        },
+        {
+          "name": "Xã BÌNH HƯNG",
+          "description": "Bình Hưng, Phong Phú",
+          "area": "32,4",
+          "population": "183.535"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "HUYỆN CỦ CHI: 21 xã, thị trấn → 7 xã",
+      "coords": "267,349,212,323,162,283,116,290,96,262,103,256,123,256,144,250,154,247,163,240,159,232,161,218,170,210,177,198,171,188,173,178,180,172,182,150,189,130,194,119,199,114,207,96,204,89,217,83,218,69,212,69,212,61,218,59,223,63,234,66,229,75,240,79,250,79,259,78,273,84,280,81,286,94,292,104,302,106,303,113,303,125,288,131,298,144,307,141,312,145,306,150,301,159,302,169,311,182,323,186,330,196,352,197,355,190,360,186,367,194,370,205,380,207,385,198,393,199,392,209,387,217,389,232,399,237,409,237,417,247,413,257,413,266,423,276,435,278,444,274,451,279,450,290,454,303,455,313,452,325,453,333,461,341,458,349,448,348,439,353,428,353,418,355,392,352,389,344,373,339,373,348,348,348,342,352,314,353,290,349",
+      "districts": [
+        {
+          "name": "Xã AN NHƠN TÂY",
+          "description": "Phú Mỹ Hưng, An Phú, An Nhơn Tây",
+          "area": "77,69",
+          "population": "40.896"
+        },
+        {
+          "name": "Xã THÁI MỸ",
+          "description": "Thái Mỹ, Phước Thạnh, Trung Lập Thượng",
+          "area": "62,44",
+          "population": "49.862"
+        },
+        {
+          "name": "Xã NHUẬN ĐỨC",
+          "description": "Nhuận Đức, Trung Lập Hạ, Phạm Văn Cội",
+          "area": "62,05",
+          "population": "40.239"
+        },
+        {
+          "name": "Xã TÂN AN HỘI",
+          "description": "Phước Hiệp, Tân An Hội, thị trấn Củ Chi",
+          "area": "53,5",
+          "population": "84.342"
+        },
+        {
+          "name": "Xã CỦ CHI",
+          "description": "Tân Phú Trung, Tân Thông Hội, Phước Vĩnh An",
+          "area": "64,87",
+          "population": "128.611"
+        },
+        {
+          "name": "Xã PHÚ HÒA ĐÔNG",
+          "description": "Phú Hòa Đông, Tân Thạnh Tây, Tân Thạnh Đông",
+          "area": "59,75",
+          "population": "97.766"
+        },
+        {
+          "name": "Xã BÌNH MỸ",
+          "description": "Bình Mỹ, Trung An, Hòa Phú",
+          "area": "54,43",
+          "population": "99.675"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "HUYỆN CẦN GIỜ: 7 xã, thị trấn → 4 xã",
+      "coords": "566,765,563,771,564,787,570,819,568,849,569,872,572,890,584,911,598,930,622,955,648,985,666,1004,692,1018,708,1010,717,1004,725,1004,731,1006,747,1005,756,1000,762,1001,797,984,820,976,837,968,843,959,810,944,805,933,797,933,800,925,823,918,839,914,847,905,846,897,850,887,856,880,871,877,872,867,870,859,872,849,879,846,889,834,886,823,876,818,864,824,857,817,855,808,860,798,861,789,848,782,852,768,855,759,844,757,836,747,826,744,813,741,804,741,797,735,788,734,783,729,779,722,768,728,762,716,756,705,745,695,736,688,734,679,721,678,718,685,711,685,702,691,695,688,683,690,681,700,672,702,660,700,652,688,646,678,643,667,632,662,623,654,613,647,604,646,599,655,590,657,578,654,567,652,557,657,563,669,578,681,590,683,599,692,597,703,598,718,609,732,612,747,610,760,599,764,587,760,575,761",
+      "districts": [
+        {
+          "name": "Xã BÌNH KHÁNH",
+          "description": "Bình Khánh, Tam Thôn Hiệp, một phần An Thới Đông",
+          "area": "158,28",
+          "population": "31.403"
+        },
+        {
+          "name": "Xã AN THỚI ĐÔNG",
+          "description": "Lý Nhơn, phần còn lại xã An Thới Đông",
+          "area": "257,84",
+          "population": "18.413"
+        },
+        {
+          "name": "Xã CẦN GIỜ",
+          "description": "Long Hòa, thị trấn Cần Thạnh",
+          "area": "157,01",
+          "population": "22.052"
+        },
+        {
+          "name": "Xã ĐẢO THẠNH AN",
+          "description": "Giữ nguyên hiện trạng",
+          "area": "131,31",
+          "population": "4.218"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "HUYỆN HÓC MÔN: 11 xã, thị trấn → 4 xã",
+      "coords": "394,463,384,459,377,452,369,454,362,441,348,445,339,441,333,440,324,439,304,437,313,407,302,406,310,373,266,349,303,352,321,352,341,352,350,350,373,350,371,339,392,346,392,352,414,355,427,354,435,354,441,352,447,348,456,351,460,341,473,348,483,345,495,347,503,367,491,374,487,368,477,370,474,382,464,381,458,384,452,377,444,381,432,384,423,392,421,400,414,406,409,413,400,427,410,443,401,449",
+      "districts": [
+        {
+          "name": "Xã ĐÔNG THẠNH",
+          "description": "Thới Tam Thôn, Đông Thạnh, Nhị Bình",
+          "area": "30,166",
+          "population": "187.758"
+        },
+        {
+          "name": "Xã HÓC MÔN",
+          "description": "Thị trấn Hóc Môn, xã Tân Xuân, Tân Hiệp",
+          "area": "16,433",
+          "population": "88.632"
+        },
+        {
+          "name": "Xã XUÂN THỚI SƠN",
+          "description": "Xuân Thới Đông, Tân Sơn Nhì, Xuân Thới Sơn",
+          "area": "35,211",
+          "population": "96.621"
+        },
+        {
+          "name": "Xã BÀ ĐIỂM",
+          "description": "Xã Xuân Thới Thượng, Trung Chánh, Bà Điểm",
+          "area": "27,361",
+          "population": "192.230"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "HUYỆN NHÀ BÈ: 7 xã, thị trấn → 2 xã",
+      "coords": "495,667,494,660,488,658,484,650,489,643,485,635,480,624,479,609,488,597,497,600,498,586,503,583,508,586,516,583,521,590,534,592,536,586,541,589,538,596,544,601,542,607,543,615,553,620,554,611,564,611,575,610,582,622,589,630,596,638,603,644,601,651,594,655,584,654,574,650,563,650,558,657,562,668,572,675,583,680,594,685,598,695,597,703,598,715,606,728,611,738,613,752,609,759,602,764,594,761,583,757,574,759,563,761,555,763,560,753,554,749,553,756,547,760,540,751,541,744,536,740,539,735,535,728,541,722,550,724,546,716,551,709,546,706,551,701,551,695,543,687,535,679,527,674,516,671,509,674,501,677",
+      "districts": [
+        {
+          "name": "Xã NHÀ BÈ",
+          "description": "Thị trấn Nhà Bè, xã Phú Xuân, Phước Kiển, Phước Lộc",
+          "area": "37,10",
+          "population": "156.540"
+        },
+        {
+          "name": "Xã HIỆP PHƯỚC",
+          "description": "Nhơn Đức, Long Thới, xã Hiệp Phước",
+          "area": "63,332",
+          "population": "73.835"
+        }
+      ]
+    }
+  ]
+}
