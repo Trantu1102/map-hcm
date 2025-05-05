@@ -162,8 +162,7 @@ const showTooltip = (data, event) => {
         tooltip.style.top = '50%';
         tooltip.style.transform = 'translate(-50%, -50%)';
         tooltip.style.maxHeight = '80vh';
-        tooltip.style.width = '85vw';
-        tooltip.style.maxWidth = '400px';
+        // KHÔNG set width/maxWidth ở đây!
     } else {
         // Vị trí tooltip cho desktop
         const viewportWidth = window.innerWidth;
