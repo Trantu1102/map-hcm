@@ -152,14 +152,19 @@
 
 .district-item .stats {
     display: flex;
-    gap: 25px;
-    margin-top: 12px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    /* hoặc nhỏ hơn nếu muốn sát nhau hơn */
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 }
 
 .district-item .stat {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
+    white-space: nowrap;
 }
 
 .district-item .description {
@@ -505,6 +510,21 @@
 /* Thêm styles cho thiết bị di động */
 @media screen and (max-width: 768px) {
     .tooltip-box {
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90vw !important;
+        max-width: 400px !important;
+        min-width: 0 !important;
+        right: auto !important;
+        bottom: auto !important;
+        position: fixed !important;
+        z-index: 9999;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tooltip-box {
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
@@ -516,7 +536,7 @@
         transform: none !important;
         padding: 18px 10px 24px 10px !important;
         font-size: 15px !important;
-        box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
         display: none;
         position: fixed;
         z-index: 9999;
@@ -525,9 +545,11 @@
         animation: slideUp 0.3s ease;
         touch-action: pan-y;
     }
+
     .tooltip-box.active {
         display: block !important;
     }
+
     .tooltip-close {
         display: block;
         position: absolute;
@@ -541,9 +563,15 @@
         cursor: pointer;
     }
 }
+
 @keyframes slideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 .district-item h4 {
