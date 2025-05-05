@@ -111,26 +111,12 @@ const tooltip = document.querySelector('.tooltip-box');
 // Sửa lại hàm showTooltip để tối ưu cho thiết bị di động
 const showTooltip = (data, event) => {
     const tooltip = document.querySelector('.tooltip-box');
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-
-    if (viewportWidth <= 768) {
-        tooltip.style.width = '33.33vw';
-        tooltip.style.maxWidth = '120px';
-    } else {
-        tooltip.style.width = 'auto';
-        tooltip.style.maxWidth = '450px';
-    }
-
-    tooltip.style.display = 'block';
-    tooltip.style.pointerEvents = 'auto';
-    
-    let tooltipContent = `
+    let tooltipContent = `<button class="tooltip-close" onclick="closeTooltip()">&times;</button>`;
+    tooltipContent += `
         <div class="district-header">
             <h3>${data.name}</h3>
         </div>
     `;
-
     data.districts.forEach(district => {
         tooltipContent += `
             <div class="district-item">
@@ -151,46 +137,48 @@ const showTooltip = (data, event) => {
             </div>
         `;
     });
-
     tooltip.innerHTML = tooltipContent;
-
-    // Kiểm tra nếu là thiết bị di động
+    tooltip.classList.add('active'); // Luôn thêm class active cho cả desktop và mobile
+    tooltip.style.display = 'block'; // Đảm bảo hiển thị
     if (window.innerWidth <= 768) {
-        // Đặt tooltip ở giữa màn hình cho thiết bị di động
-        tooltip.style.position = 'fixed';
-        tooltip.style.left = '50%';
-        tooltip.style.top = '50%';
-        tooltip.style.transform = 'translate(-50%, -50%)';
-        tooltip.style.maxHeight = '80vh';
-        // KHÔNG set width/maxWidth ở đây!
+        tooltip.scrollTop = 0;
     } else {
         // Vị trí tooltip cho desktop
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
         const tooltipRect = tooltip.getBoundingClientRect();
-        
         let x = event.clientX + 50;
         let y = event.clientY - tooltipRect.height / 2;
-
         if (x + tooltipRect.width > viewportWidth) {
             x = event.clientX - tooltipRect.width - 50;
         }
-
         if (y < 0) {
             y = 0;
         } else if (y + tooltipRect.height > viewportHeight) {
             y = viewportHeight - tooltipRect.height;
         }
-
         tooltip.style.position = 'fixed';
         tooltip.style.left = x + 'px';
         tooltip.style.top = y + 'px';
         tooltip.style.transform = 'none';
         tooltip.style.maxWidth = '450px';
     }
-
-    tooltip.classList.add('active');
 };
+
+function closeTooltip() {
+    const tooltip = document.querySelector('.tooltip-box');
+    tooltip.classList.remove('active');
+    tooltip.style.display = 'none'; // Ẩn tooltip
+}
+// Đóng tooltip khi click ngoài
+if (window.innerWidth <= 768) {
+    document.addEventListener('click', function(e) {
+        const tooltip = document.querySelector('.tooltip-box');
+        if (tooltip.classList.contains('active') && !tooltip.contains(e.target)) {
+            closeTooltip();
+        }
+    });
+}
 
 // Thêm sự kiện click vào document để đóng tooltip
 document.addEventListener('click', (event) => {
