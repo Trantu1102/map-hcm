@@ -111,6 +111,17 @@ const tooltip = document.querySelector('.tooltip-box');
 // Sửa lại hàm showTooltip để tối ưu cho thiết bị di động
 const showTooltip = (data, event) => {
     const tooltip = document.querySelector('.tooltip-box');
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    if (viewportWidth <= 768) {
+        tooltip.style.width = '33.33vw';
+        tooltip.style.maxWidth = '120px';
+    } else {
+        tooltip.style.width = 'auto';
+        tooltip.style.maxWidth = '450px';
+    }
+
     tooltip.style.display = 'block';
     tooltip.style.pointerEvents = 'auto';
     
