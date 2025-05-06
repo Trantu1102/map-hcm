@@ -116,6 +116,7 @@ const showTooltip = (data, event) => {
         <div class="district-header">
             <h3>${data.name}</h3>
         </div>
+        <div class="district-list-scroll">
     `;
     data.districts.forEach(district => {
         tooltipContent += `
@@ -137,6 +138,7 @@ const showTooltip = (data, event) => {
             </div>
         `;
     });
+    tooltipContent += `</div>`;
     tooltip.innerHTML = tooltipContent;
     tooltip.classList.add('active'); // Luôn thêm class active cho cả desktop và mobile
     tooltip.style.display = 'block'; // Đảm bảo hiển thị
