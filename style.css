@@ -553,6 +553,13 @@
 }
 
 @media screen and (max-width: 768px) {
+    .tooltip-box .district-list {
+        max-height: 110px;
+        overflow-y: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .tooltip-box {
         left: 0 !important;
         right: 0 !important;
