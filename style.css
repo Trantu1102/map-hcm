@@ -553,7 +553,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .tooltip-box .hcm_districts {
+    .tooltip-box .district-list-scroll {
         max-height: 110px;
         overflow-y: auto;
     }
