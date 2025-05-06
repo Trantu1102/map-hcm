@@ -553,9 +553,9 @@
 }
 
 @media screen and (max-width: 768px) {
-    .tooltip-box .district-list-scroll {
-        max-height: 110px;
-        overflow-y: auto;
+    .tooltip-box .district-list-scroll .district-item {
+        min-height: 55px;
+        padding: 8px 0;
     }
 }
 
