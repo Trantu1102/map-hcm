@@ -542,7 +542,7 @@
         display: none;
         position: fixed;
         z-index: 9999;
-        max-height: 20vh;
+        max-height: 30vh;
         overflow-y: auto;
         animation: slideUp 0.3s ease;
         touch-action: pan-y;
